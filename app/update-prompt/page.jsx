@@ -7,6 +7,18 @@ import Form from "@components/Form";
 
 const UpdatePrompt = () => {
   const router = useRouter();
+
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
+      {" "}
+      {/* Wrap the component with React.Suspense */}
+      <UpdatePromptContent />
+    </React.Suspense>
+  );
+};
+
+const UpdatePromptContent = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const promptId = searchParams.get("id");
 
