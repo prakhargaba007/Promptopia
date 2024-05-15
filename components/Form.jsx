@@ -1,6 +1,9 @@
+import { createNewPost } from "@lib/action";
 import Link from "next/link";
+import { useFormState } from "react-dom";
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+  const [state, formAction] = useFormState(createNewPost, { error: null });
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="head_text text-left">
@@ -12,6 +15,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       </p>
 
       <form
+        // action={formAction}
         onSubmit={handleSubmit}
         className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
       >
@@ -25,6 +29,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             onChange={(e) => setPost({ ...post, prompt: e.target.value })}
             placeholder="Write your post here"
             required
+            name="prompt"
             className="form_textarea "
           />
         </label>
@@ -42,6 +47,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             type="text"
             placeholder="#Tag"
             required
+            name="tag"
             className="form_input"
           />
         </label>
@@ -57,6 +63,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             className="px-5 py-1.5 text-sm rounded-full text-white bg-orange-500"
           >
             {submitting ? `${type}ing...` : type}
+            {/* {type} */}
           </button>
         </div>
       </form>
