@@ -1,6 +1,11 @@
+import { usePathname } from "next/navigation";
 import PromptCard from "./PromptCard";
 
 const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
+  // const pathName = usePathname();
+  // if (pathName === "/profile") {
+
+  // }
   return (
     <section className="w-full">
       <h1 className="head_text text-left">
